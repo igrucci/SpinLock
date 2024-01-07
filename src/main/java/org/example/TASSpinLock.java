@@ -11,12 +11,16 @@ public class TASSpinLock {
     // locked: false -> true
     public void lock() {
         while(locked.getAndSet(true)) { // spin if true
-            //backoff
         }
+        System.out.println("in the critical section");
     }
 
     public void unlock(){
+        System.out.println("leave the critical section");
         locked.set(false);
     }
+
+
+
 
 }
