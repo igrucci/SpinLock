@@ -13,6 +13,7 @@ public class TicketSpinLock {
     public void lock(){
         int myTicket = nextFreeTicket.getAndIncrement();
         while(ownerTicket.get() != myTicket){ // wait
+            Thread.onSpinWait();
         }
         System.out.println("in the critical section");
     }

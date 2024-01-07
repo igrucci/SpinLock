@@ -11,6 +11,7 @@ public class TASSpinLock {
     // locked: false -> true
     public void lock() {
         while(locked.getAndSet(true)) { // spin if true
+        Thread.onSpinWait();//
         }
         System.out.println("in the critical section");
     }
